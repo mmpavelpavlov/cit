@@ -17,7 +17,7 @@ pipeline {
             //    sh "cd achieve ; sbt compile"
             }
         }
-        stage('Test') {
+        stage('Unit Test') {
             steps {
                 echo 'Testing...'
         //      sh "cd achieve ; sbt test"
@@ -28,9 +28,9 @@ pipeline {
 		steps {
 			script {
 				if (env.BRANCH_NAME == 'master') {
-					echo 'I will build on the UAT environment'
+					echo 'I will deploy on the UAT environment'
 				} else if (env.BRANCH_NAME == 'development') {
-					echo 'I will build on the DEV environment'
+					echo 'I will deploy on the DEV environment'
 				} else { echo 'This is a feature branch, will not be deployed to environment'
 				}	
 			}		
@@ -38,9 +38,9 @@ pipeline {
 		}
         }
 
-    }
+   }
 }
-script {
+node {
         def branch = env.BRANCH_NAME
         def commit = sh (script: 'git rev-parse --short HEAD', returnStdout: true).trim()
 
