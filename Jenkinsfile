@@ -1,7 +1,25 @@
+node {
+        def branch = env.BRANCH_NAME
+        def commit = sh (script: 'git rev-parse --short HEAD', returnStdout: true).trim()
+
+        def tag
+            switch (branch) {
+                case 'master':
+                    tag = 'master-' + commit
+                    break
+                case 'development':
+                    tag = 'development-' + commit
+                    break
+                default:
+                    tag = 'feature-' + commit
+                    break
+            }
+       currentBuild.description = tag
+}
+
+
 pipeline {
     agent any
-
-
     stages {
 
         stage ("Checkout SCM") {
@@ -39,22 +57,4 @@ pipeline {
         }
 
    }
-}
-node {
-        def branch = env.BRANCH_NAME
-        def commit = sh (script: 'git rev-parse --short HEAD', returnStdout: true).trim()
-
-        def tag
-            switch (branch) {
-                case 'master':
-                    tag = 'master-' + commit
-                    break
-                case 'development':
-                    tag = 'development-' + commit
-                    break
-                default:
-                    tag = 'feature-' + commit
-                    break
-            }
-       currentBuild.description = tag
 }
