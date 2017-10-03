@@ -27,9 +27,10 @@ pipeline {
 		steps {
 			script {
 				if (env.BRANCH_NAME == 'master') {
-					echo 'I only execute on the master branch'
-				} else {
-					echo 'I execute elsewhere'
+					echo 'I will build on the UAT environment'
+				} else if (env.BRANCH_NAME == 'development') {
+					echo 'I will build on the DEV environment'
+				} else { echo 'This is a feature branch, will not be deployed to environment'
 				}	
 			}		
 
