@@ -38,7 +38,7 @@ pipeline {
         stage('Unit Test') {
             steps {
                 echo 'Testing...'
-        //      sh "cd achieve ; sbt test"
+                sh "cd achieve ; sbt test"
                 sh "ls -lah"
             }
         }
