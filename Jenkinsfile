@@ -31,6 +31,7 @@ pipeline {
 		script {
                 sh (""" sed -i 's@url = "jdbc:postgresql://localhost/achieve_db?user=postgres\\&password=r00t-pazz"@url = "jdbc:postgresql://raachievedev.cdbfsscmkjwr.us-east-1.rds.amazonaws.com/dev_db?user=RAAchieveDev\\&password=dgaUwwunDY2Pd4jZw58D"@g' file2 """)
 		}
+		sh "cat file2"
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
                 sh "ls -lah"
                 sh "cd achieve ; sbt compile"
