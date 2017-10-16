@@ -7,7 +7,7 @@ pipeline {
                 echo 'Building..'
 		script {
 sh """
-if netstat -plantu | grep -i :9092; then
+if netstat -plantu | grep -i :90924; then
     echo kafka is running
 else
     echo kafka is not running; exit 1
