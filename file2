@@ -1,9 +1,0 @@
-jdbc-defaults.slick {
-  # The Slick profile to use
-  # set to one of: slick.jdbc.PostgresProfile$, slick.jdbc.MySQLProfile$, slick.jdbc.OracleProfile$ or slick.jdbc.H2Profile$
-  profile = "slick.jdbc.PostgresProfile$"
-  driver = "org.postgresql.Driver"
-  url = "jdbc:postgresql://localhost/achieve_db?user=postgres&password=r00t-pazz"
-  # The JNDI name
-  jndiName = "DefaultDS"
-}
